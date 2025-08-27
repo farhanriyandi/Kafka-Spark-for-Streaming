@@ -1,0 +1,71 @@
+services:
+  pyspark-jupyter:
+    image: easewithdata/pyspark-jupyter-lab
+    user: root
+    container_name: riyandi_pyspark-jupyter-lab
+    ports:
+      - 8888:8888
+      - 4040:4040
+    environment:
+      TZ: Asia/Jakarta
+      JUPYTER_PORT: 8888
+      SPARK_UI_PORT: 4040
+      GRANT_SUDO: yes
+    volumes:
+      - ./dockervol:/data:rw
+      - ./notebooks:/home/jupyter/notebooks:rw
+      - ./scripts:/home/jupyter/scripts:rw
+      
+  # zookeeper:
+  #   image: confluentinc/cp-zookeeper:latest
+  #   container_name: zookeeper
+  #   ports:
+  #     - 2181:2181
+  #   environment:
+  #     ZOOKEEPER_CLIENT_PORT: 2181
+  #     ZOOKEEPER_TICK_TIME: 2000
+  postgres:
+    image: postgres:13
+    container_name: riyandi_postgres
+    ports:
+      - "7432:5432"
+    environment:
+      POSTGRES_USER: my-postgres
+      POSTGRES_PASSWORD: my-postgres
+      POSTGRES_DB: my-postgres
+      TZ: Asia/Jakarta
+    # volumes:
+    #   - ./dockervol/postgres:/var/lib/postgresql/data
+
+
+  kafka:
+    image: bitnami/kafka:3.7.1
+    container_name: riyandi_kafka
+    hostname: kafka
+    ports:
+      - 9092:9092
+    volumes:
+      - ./dockervol/kafka:/bitnami/kafka
+    environment:
+      - TZ=Asia/Jakarta
+      - KAFKA_CFG_NODE_ID=0
+      - KAFKA_CFG_PROCESS_ROLES=controller,broker
+      - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=0@kafka:9093
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:19092,PLAINTEXT_HOST://:9092,CONTROLLER://:9093
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://kafka:19092,PLAINTEXT_HOST://localhost:9092
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
+      - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=PLAINTEXT
+  
+  kafka-ui:
+    image: provectuslabs/kafka-ui:v0.7.2
+    container_name: riyandi_kafka-ui
+    ports:
+      - 8080:8080
+    environment:
+      TZ: Asia/Jakarta
+      KAFKA_CLUSTERS_0_NAME: local
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:19092
+
+volumes:
+  dockervol:

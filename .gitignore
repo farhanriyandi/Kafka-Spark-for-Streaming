@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+.venv/
+
+# Spark checkpoints
+scripts/utils/checkpoint_*/
+
+# Output data
+scripts/utils/data/
+
+# Local datasets
+datasets/
+
+# Docker volumes
+dockervol/
+
+# Jupyter notebook checkpoints
+notebooks/.ipynb_checkpoints/
+
+notebooks/data/
+
+notebooks/checkpoint_*/
