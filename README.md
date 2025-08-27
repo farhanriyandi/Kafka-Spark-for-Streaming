@@ -13,7 +13,14 @@
    You can open Kafka UI (web dashboard) at:  
     👉 [http://localhost:8080/](http://localhost:8080/)
 
-3. Create 1 topics weather-data-flattened
+3. Create a table in PostgreSQL using the Docker container CLI
+   * Run
+   ```
+   docker exec -it riyandi_postgres psql -U my-postgres -d my-postgres
+   ```
+   * Once inside the PostgreSQL CLI, execute the SQL commands provided in the file: **db_init/init.sql**
+
+4. Create 1 topics weather-data-flattened
     * Open a shell inside the Kafka container:
     ```bash
     docker exec -it my-kafka bash
@@ -30,7 +37,7 @@
      kafka-topics.sh --create --topic weather-data-flattened --bootstrap-server localhost:9092 --partitions 3 --replication-factor 1
      ```
      
-4. Create a virtual environment **for Linux/macOS:**
+5. Create a virtual environment **for Linux/macOS:**
    ```
     python3 -m venv .venv
    ```
@@ -39,12 +46,12 @@
    ```
    **Note:** You can use other methods to create and activate a virtual environment depending on your operating system or personal preference.
 
-5. Install the dependencies
+6. Install the dependencies
    ```
    pip install -r requirements.txt
    ```
 
-6. Run the Python Scripts
+7. Run the Python Scripts
    * Terminal 1 → Run the weather data generator + producer (to send data into kafka):
      ```
      python3 scripts/utils/post_to_kafka.py
@@ -70,6 +77,9 @@
 
 * **PostgreSQL table: `weather_data` (aggregated weather metrics)**
   <img width="582" height="400" alt="weather_data postgres" src="https://github.com/user-attachments/assets/b3ae69d5-f0a6-427c-be1d-d705556fef4a" />
+
+  <img width="731" height="429" alt="image" src="https://github.com/user-attachments/assets/6ed1439c-d950-42d6-9761-ee4715384bcf" />
+
 
 ✅ This confirms that the pipeline successfully ingests raw weather data, flattens it, and stores aggregated results into PostgreSQL.
 
