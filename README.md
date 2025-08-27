@@ -42,7 +42,7 @@
    ```
    * Once inside the PostgreSQL CLI, execute the SQL commands provided in the file: **db_init/init.sql**
      
-5. Create a virtual environment **for Linux/macOS:**
+5. Create a virtual environment in another terminal **for Linux/macOS:**
    ```
     python3 -m venv .venv
    ```
