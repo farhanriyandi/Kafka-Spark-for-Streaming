@@ -13,14 +13,7 @@
    You can open Kafka UI (web dashboard) at:  
     👉 [http://localhost:8080/](http://localhost:8080/)
 
-3. Create a table in PostgreSQL using the Docker container CLI
-   * Run
-   ```
-   docker exec -it riyandi_postgres psql -U my-postgres -d my-postgres
-   ```
-   * Once inside the PostgreSQL CLI, execute the SQL commands provided in the file: **db_init/init.sql**
-
-4. Create 1 topics weather-data-flattened
+3. Create 1 topics weather-data-flattened
     * Open a shell inside the Kafka container:
     ```bash
     docker exec -it my-kafka bash
@@ -36,6 +29,13 @@
      ```bash
      kafka-topics.sh --create --topic weather-data-flattened --bootstrap-server localhost:9092 --partitions 3 --replication-factor 1
      ```
+
+4. Create a table in PostgreSQL using the Docker container CLI
+   * Run
+   ```
+   docker exec -it riyandi_postgres psql -U my-postgres -d my-postgres
+   ```
+   * Once inside the PostgreSQL CLI, execute the SQL commands provided in the file: **db_init/init.sql**
      
 5. Create a virtual environment **for Linux/macOS:**
    ```
