@@ -25,7 +25,7 @@
    ```
    Then repeat the step ```docker exec -it my-kafka bash ``` above.
 
-   * Create `transactions` topic:
+   * Create **weather-data-flattened** topic:
      ```bash
      kafka-topics.sh --create --topic weather-data-flattened --bootstrap-server localhost:9092 --partitions 3 --replication-factor 1
      ```
