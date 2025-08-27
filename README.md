@@ -88,7 +88,7 @@
   ```
   select * from weather_data;
   ```
-   and the result would like to be in the below:
+  The result should look like this:
   <img width="731" height="429" alt="image" src="https://github.com/user-attachments/assets/6ed1439c-d950-42d6-9761-ee4715384bcf" />
 
 
