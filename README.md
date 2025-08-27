@@ -83,6 +83,12 @@
 * **PostgreSQL table: `weather_data` (aggregated weather metrics)**
   <img width="582" height="400" alt="weather_data postgres" src="https://github.com/user-attachments/assets/b3ae69d5-f0a6-427c-be1d-d705556fef4a" />
 
+  
+  Then, in the PostgreSQL CLI (as shown in step 4), run the query:
+  ```
+  select * from weather_data;
+  ```
+   and the result would like to be in the below:
   <img width="731" height="429" alt="image" src="https://github.com/user-attachments/assets/6ed1439c-d950-42d6-9761-ee4715384bcf" />
 
 
