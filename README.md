@@ -16,14 +16,14 @@
 3. Create 1 topics weather-data-flattened
     * Open a shell inside the Kafka container:
     ```bash
-    docker exec -it my-kafka bash
+    docker exec -it riyandi_kafka bash
     ```
    **Note:** If you are using Linux and encounter permission issues, try:
    ```
    sudo chown -R 1001:1001 ./dockervol/kafka
    docker compose up -d
    ```
-   Then repeat the step ```docker exec -it my-kafka bash ``` above.
+   Then repeat the step ```docker exec -it riyandi_kafka bash ``` above.
 
    * Create **weather-data-flattened** topic:
      ```bash
