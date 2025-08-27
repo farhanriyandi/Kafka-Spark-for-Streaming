@@ -29,6 +29,11 @@
      ```bash
      kafka-topics.sh --create --topic weather-data-flattened --bootstrap-server localhost:9092 --partitions 3 --replication-factor 1
      ```
+     
+   * After that you can exit:
+     ```
+     exit
+     ```
 
 4. Create a table in PostgreSQL using the Docker container CLI
    * Run
