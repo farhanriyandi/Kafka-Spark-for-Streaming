@@ -61,9 +61,9 @@
      python3 scripts/utils/flatten_to_kafka.py
      ```
    * Terminal 3 → Run the script to aggregate the processed data and load it into PostgreSQL 
-   ```
-   python3 scripts/utils/aggregate_to_postgres.py
-   ```
+     ```
+     python3 scripts/utils/aggregate_to_postgres.py
+     ```
 
 ## Results
 
